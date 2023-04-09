@@ -1,0 +1,17 @@
+{
+	"name": "Vista Tabla de hechos",
+	"properties": {
+		"content": {
+			"query": "CREATE OR REPLACE VIEW dbo.vw_ft_indicadores AS\nSELECT \n    t.TIME ,\n    t.Ts_Valor,\n    t.CodigoNacional,\n    h.HR_Valor,\n    v.dd_Valor,\n    v.ff_Valor,\n    v.VRB_Valor\nFROM dbo.temperatura T \n    INNER JOIN dbo.viento V  \n        ON CAST(t.time AS DATE) = CAST(v.time AS DATE)\n        AND t.CodigoNacional = v.CodigoNacional\n    INNER JOIN dbo.humedad H \n        ON CAST(t.time AS DATE) = CAST(h.time AS DATE)\n        AND t.CodigoNacional= h.CodigoNacional",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "clima_cl",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
