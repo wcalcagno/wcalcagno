@@ -2,7 +2,7 @@
 	"name": "Vista Tabla de hechos",
 	"properties": {
 		"content": {
-			"query": "ALTER VIEW dbo.vw_ft_indicadores AS\nSELECT top (100)\n    COALESCE (t.TIME , h.time , v.time) as fecha_hora,\n    COALESCE (t.CodigoNacional, h.CodigoNacional, v.CodigoNacional) as Codigo,\n    t.Ts_Valor,\n    h.HR_Valor,\n    v.dd_Valor,\n    v.ff_Valor,\n    v.VRB_Valor\nFROM dbo.temperatura T \n    FULL JOIN dbo.viento V  \n        ON t.time =v.time\n        AND t.CodigoNacional = v.CodigoNacional\n    FULL JOIN dbo.humedad H \n        ON t.time = h.time\n        AND t.CodigoNacional= h.CodigoNacional\norder by fecha_hora ASC ",
+			"query": "ALTER VIEW dbo.vw_ft_indicadores AS\nSELECT \n    COALESCE (t.TIME , h.time , v.time) as fecha_hora,\n    COALESCE (t.CodigoNacional, h.CodigoNacional, v.CodigoNacional) as Codigo,\n    t.Ts_Valor,\n    h.HR_Valor,\n    v.dd_Valor,\n    v.ff_Valor,\n    v.VRB_Valor\nFROM dbo.temperatura T \n    FULL JOIN dbo.viento V  \n        ON t.time =v.time\n        AND t.CodigoNacional = v.CodigoNacional\n    FULL JOIN dbo.humedad H \n        ON t.time = h.time\n        AND t.CodigoNacional= h.CodigoNacional\norder by fecha_hora ASC ",
 			"metadata": {
 				"language": "sql"
 			},
