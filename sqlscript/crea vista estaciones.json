@@ -1,0 +1,17 @@
+{
+	"name": "crea vista estaciones",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW dbo.vw_dim_estaciones AS\nSELECT DISTINCT codigoNacional , nombreEstacion, latitud, longitud\nFROM DBO.HUMEDAD",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "clima_cl",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
