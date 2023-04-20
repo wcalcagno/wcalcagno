@@ -1,0 +1,17 @@
+{
+	"name": "humdia",
+	"properties": {
+		"content": {
+			"query": "    SELECT top (100)\n    CAST ( time as date) as fecha\n    , CodigoNacional as estacion \n    , COALESCE(MAX(HR_Valor),0) AS max_hum\n    , COALESCE(MIN(HR_Valor),0) AS min_hum\n    , COALESCE(ROUND(AVG(HR_Valor),2),0) AS prom_hum\n    FROM dbo.humedad\n    GROUP BY CAST( time as date ), CodigoNAcional ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "clima_cl",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

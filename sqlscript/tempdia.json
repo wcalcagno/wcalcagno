@@ -1,0 +1,17 @@
+{
+	"name": "tempdia",
+	"properties": {
+		"content": {
+			"query": "    SELECT top (100)\n    CAST( time as date ) as fecha\n    , CodigoNAcional as estacion \n    , max(ts_valor) as tmax \n    , min(ts_valor) as tmin \n    , max(ts_valor) - min(ts_valor) as tvar\n    , round( avg(ts_valor),2) as tmed\n    FROM dbo.temperatura\n    group by CAST( time as date ), CodigoNAcional ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "clima_cl",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "vvientodia",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100)\nCAST ( time as date) as fecha\n, CodigoNacional as estacion \n, MAX(ff_Valor) as max_vvel\n, MIN(ff_Valor) as min_vvel\nFROM dbo.viento\nGROUP by cast( time as date), CodigoNacional",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "clima_cl",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

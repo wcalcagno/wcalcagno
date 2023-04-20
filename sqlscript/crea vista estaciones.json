@@ -2,7 +2,7 @@
 	"name": "crea vista estaciones",
 	"properties": {
 		"content": {
-			"query": "CREATE VIEW dbo.vw_dim_estaciones AS\nSELECT DISTINCT codigoNacional , nombreEstacion, latitud, longitud\nFROM DBO.HUMEDAD",
+			"query": "ALTER VIEW dbo.vw_dim_estaciones AS\nSELECT DISTINCT codigoNacional , nombreEstacion, latitud, longitud\nFROM DBO.temperatura",
 			"metadata": {
 				"language": "sql"
 			},
