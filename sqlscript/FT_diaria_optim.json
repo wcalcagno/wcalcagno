@@ -7,7 +7,7 @@
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "master",
+				"databaseName": "clima_cl",
 				"poolName": "Built-in"
 			},
 			"resultLimit": 5000
