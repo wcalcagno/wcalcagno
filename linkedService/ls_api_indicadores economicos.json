@@ -1,0 +1,12 @@
+{
+	"name": "ls_api_indicadores economicos",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://mindicador.cl/api/dolar",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
