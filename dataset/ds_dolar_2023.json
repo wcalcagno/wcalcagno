@@ -1,0 +1,18 @@
+{
+	"name": "ds_dolar_2023",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_api_indicadores economicos",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "2023"
+			}
+		},
+		"schema": {}
+	}
+}
