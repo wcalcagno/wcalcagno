@@ -1,0 +1,149 @@
+{
+	"name": "pl_dolar_multiperiodo",
+	"properties": {
+		"activities": [
+			{
+				"name": "dolar multiperiodo",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.multiperiodo",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Api a datalake multiperiodo",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "JsonSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									},
+									"formatSettings": {
+										"type": "JsonReadSettings"
+									}
+								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "JsonWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "$['version']"
+											},
+											"sink": {
+												"path": "$['version']"
+											}
+										},
+										{
+											"source": {
+												"path": "$['autor']"
+											},
+											"sink": {
+												"path": "$['autor']"
+											}
+										},
+										{
+											"source": {
+												"path": "$['codigo']"
+											},
+											"sink": {
+												"path": "$['codigo']"
+											}
+										},
+										{
+											"source": {
+												"path": "$['nombre']"
+											},
+											"sink": {
+												"path": "$['nombre']"
+											}
+										},
+										{
+											"source": {
+												"path": "$['unidad_medida']"
+											},
+											"sink": {
+												"path": "$['unidad_medida']"
+											}
+										},
+										{
+											"source": {
+												"path": "$['serie'][0]['fecha']"
+											},
+											"sink": {
+												"path": "$['serie']['fecha']"
+											}
+										},
+										{
+											"source": {
+												"path": "$['serie'][0]['valor']"
+											},
+											"sink": {
+												"path": "$['serie']['valor']"
+											}
+										}
+									],
+									"collectionReference": "$['serie']"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "ds_dolar_variable",
+									"type": "DatasetReference",
+									"parameters": {
+										"periodo": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ds_dt_dolar_2023",
+									"type": "DatasetReference",
+									"parameters": {
+										"periodo": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"multiperiodo": {
+				"type": "array"
+			}
+		},
+		"annotations": []
+	}
+}
