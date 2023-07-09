@@ -40,50 +40,10 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['version']"
-								},
-								"sink": {
-									"path": "$['version']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['autor']"
-								},
-								"sink": {
-									"path": "$['autor']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['codigo']"
-								},
-								"sink": {
-									"path": "$['codigo']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['nombre']"
-								},
-								"sink": {
-									"path": "$['nombre']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['unidad_medida']"
-								},
-								"sink": {
-									"path": "$['unidad_medida']"
-								}
-							},
-							{
-								"source": {
 									"path": "['fecha']"
 								},
 								"sink": {
-									"path": "$['serie'][0]['fecha']"
+									"path": "$['serie']['fecha']"
 								}
 							},
 							{
@@ -91,7 +51,47 @@
 									"path": "['valor']"
 								},
 								"sink": {
-									"path": "$['serie'][0]['valor']"
+									"path": "$['serie']['valor']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['version']"
+								},
+								"sink": {
+									"path": "$['version']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['autor']"
+								},
+								"sink": {
+									"path": "$['autor']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['codigo']"
+								},
+								"sink": {
+									"path": "$['codigo']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['nombre']"
+								},
+								"sink": {
+									"path": "$['nombre']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['unidad_medida']"
+								},
+								"sink": {
+									"path": "$['unidad_medida']"
 								}
 							}
 						],
