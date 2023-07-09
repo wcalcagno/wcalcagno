@@ -1,0 +1,26 @@
+{
+	"name": "ds_dolarvariable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ApiIndicadoresEconomico",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"periodo": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@concat(\n    dataset().periodo\n)",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	}
+}
