@@ -16,7 +16,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@concat(\n    dataset().periodo\n)",
+					"value": "@concat(\n    dataset().periodo,\n    '.json'\n)",
 					"type": "Expression"
 				},
 				"folderPath": "dolar",
