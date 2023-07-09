@@ -46,7 +46,75 @@
 										"type": "ParquetWriteSettings"
 									}
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "$['version']"
+											},
+											"sink": {
+												"name": "version",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['autor']"
+											},
+											"sink": {
+												"name": "autor",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['codigo']"
+											},
+											"sink": {
+												"name": "codigo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['nombre']"
+											},
+											"sink": {
+												"name": "nombre",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['unidad_medida']"
+											},
+											"sink": {
+												"name": "unidad_medida",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['serie']['fecha']"
+											},
+											"sink": {
+												"name": "fecha",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['serie']['valor']"
+											},
+											"sink": {
+												"name": "valor",
+												"type": "Double"
+											}
+										}
+									]
+								}
 							},
 							"inputs": [
 								{
