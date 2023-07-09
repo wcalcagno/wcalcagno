@@ -15,6 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(\n    dataset().periodo,\n    '.snappy.parquet'\n)",
+					"type": "Expression"
+				},
 				"folderPath": "parquet",
 				"fileSystem": "silver"
 			},
