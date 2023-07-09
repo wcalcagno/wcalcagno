@@ -1,0 +1,28 @@
+{
+	"name": "ds_dt_dolar_2023",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"periodo": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(\n    dataset().periodo\n)",
+					"type": "Expression"
+				},
+				"folderPath": "dolar",
+				"fileSystem": "bronce"
+			}
+		},
+		"schema": {}
+	}
+}
