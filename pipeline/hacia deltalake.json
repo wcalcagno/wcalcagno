@@ -63,7 +63,13 @@
 							"outputs": [
 								{
 									"referenceName": "ds_parquet_silver",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"periodo": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
