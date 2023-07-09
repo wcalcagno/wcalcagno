@@ -83,7 +83,7 @@
 									"path": "$['serie'][0]['fecha']"
 								},
 								"sink": {
-									"path": "$['serie'][0]['fecha']"
+									"path": "$['serie']['fecha']"
 								}
 							},
 							{
@@ -91,7 +91,7 @@
 									"path": "$['serie'][0]['valor']"
 								},
 								"sink": {
-									"path": "$['serie'][0]['valor']"
+									"path": "$['serie']['valor']"
 								}
 							}
 						]
