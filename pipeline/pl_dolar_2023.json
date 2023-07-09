@@ -1,0 +1,128 @@
+{
+	"name": "pl_dolar_2023",
+	"properties": {
+		"activities": [
+			{
+				"name": "copiar_api_a_datalake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['version']"
+								},
+								"sink": {
+									"path": "$['version']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['autor']"
+								},
+								"sink": {
+									"path": "$['autor']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['codigo']"
+								},
+								"sink": {
+									"path": "$['codigo']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['nombre']"
+								},
+								"sink": {
+									"path": "$['nombre']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['unidad_medida']"
+								},
+								"sink": {
+									"path": "$['unidad_medida']"
+								}
+							},
+							{
+								"source": {
+									"path": "['fecha']"
+								},
+								"sink": {
+									"path": "$['serie'][0]['fecha']"
+								}
+							},
+							{
+								"source": {
+									"path": "['valor']"
+								},
+								"sink": {
+									"path": "$['serie'][0]['valor']"
+								}
+							}
+						],
+						"collectionReference": "$['serie']"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_dolar_2023",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_dt_dolar_2023",
+						"type": "DatasetReference",
+						"parameters": {
+							"periodo": {
+								"value": "@pipeline().parameters.anno",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"anno": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
